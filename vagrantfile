@@ -1,0 +1,26 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# Vagrantfile
+Vagrant.configure("2") do |config|
+  config.vm.define "slave_node" do |node|
+    node.vm.box = "ubuntu/bionic64"
+    node.vm.network "private_network", type: "private_network", ip: "10.0.2.20"
+    node.vm.provider "virtualbox" do |vb|
+      vb.memory = "2048"
+      vb.cpus = 2
+    end
+
+    node.vm.provision "shell", path: "provision_slave.sh"
+  end
+
+  config.vm.define "master_node" do |node|
+    node.vm.box = "ubuntu/bionic64"
+    node.vm.network "private_network", type: "private_network", ip: "10.0.2.10"
+    node.vm.provider "virtualbox" do |vb|
+      vb.memory = "2048"
+      vb.cpus = 2
+    end
+
+    node.vm.provision "shell", path: "provision_master.sh"
+  end
+end
