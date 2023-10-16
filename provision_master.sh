@@ -4,7 +4,7 @@
 # --------------------------------------------------------
 # Set the root password. It includes, lowercase letters, uppercase letters, numbers and special characters for strength. 
 # --------------------------------------------------------
-MYSQL_ROOT_PASSWORD="rootDBPass#12"
+MYSQL_ROOT_PASSWORD="MyStackpass$"
 
 
 echo "Provisioning master..."
@@ -33,7 +33,7 @@ sudo apt install net-tools
 # Define the username and password for the new user
 # --------------------------------------------------------
 new_username="altschool"
-new_password="altschool1234"
+new_password="MyStackpass$"
 
 
 # --------------------------------------------------------
@@ -53,7 +53,7 @@ echo "User '$new_username' has been created and granted root privileges."
 # Enable SSH key-based authentication between the master and slave nodes
 # --------------------------------------------------------
 ssh-keygen -t rsa
-ssh-copy-id -i ~/.ssh/id_rsa.pub vagrant@192.168.56.6
+ssh-copy-id -i ~/.ssh/id_rsa.pub vagrant@192.168.50.5
 
 
 # --------------------------------------------------------
@@ -65,7 +65,7 @@ sudo systemctl restart ssh
 # --------------------------------------------------------
 # Copy the contents of /mnt/altschool on the master node to /mnt/altschool/slave on the slave node
 # --------------------------------------------------------
-ssh altschool@192.168.56.5 "rsync -av /mnt/altschool /home/altschool/"
+ssh altschool@192.168.50.5 "rsync -av /mnt/altschool /home/altschool/"
 
 
 # --------------------------------------------------------
@@ -83,8 +83,8 @@ sudo apt install -y mysql-server
 # --------------------------------------------------------
 # Initialize MySQL with a default user and password on both nodes
 # --------------------------------------------------------
-# ssh altschool@192.168.56.3 "mysql -u root -p < /vagrant/init.sql"
-# ssh altschool@192.168.56.5 "mysql -u root -p < /vagrant/init.sql"
+# ssh altschool@192.168.50.5 "mysql -u root -p < /vagrant/init.sql"
+# ssh altschool@192.168.50.6 "mysql -u root -p < /vagrant/init.sql"
 
 
 # --------------------------------------------------------

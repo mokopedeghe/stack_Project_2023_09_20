@@ -4,7 +4,7 @@
 # --------------------------------------------------------
 # Set the root password
 # --------------------------------------------------------
-MYSQL_ROOT_PASSWORD="rootDBPass#12"
+MYSQL_ROOT_PASSWORD="MyStackpass$"
 
 
 echo "Provisioning slave..."
@@ -36,7 +36,7 @@ sudo apt install net-tools
 # --------------------------------------------------------
 # Copy the contents of /mnt/altschool on the master node to /mnt/altschool/slave on the slave node
 # --------------------------------------------------------
-# ssh altschool@192.168.56.5 "mkdir -p /mnt/altschool/slave"
+# ssh altschool@192.168.50.5 "mkdir -p /mnt/altschool/slave"
 
 
 # --------------------------------------------------------
@@ -88,7 +88,7 @@ sudo apt install -y mysql-server
 
 
 # Initialize MySQL with a default user and password on both nodes
-# ssh altschool@192.168.56.3 "mysql -u root -p < /vagrant/init.sql"
+# ssh altschool@192.168.50.5 "mysql -u root -p < /vagrant/init.sql"
 
 
 # Update the MySQL configuration file
